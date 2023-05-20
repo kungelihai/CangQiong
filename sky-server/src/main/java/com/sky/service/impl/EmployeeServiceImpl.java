@@ -67,7 +67,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = new Employee();
         BeanUtils.copyProperties(dto,employee);
 
-        //设置传输类中没有的数据
         //1.设置状态
         employee.setStatus(StatusConstant.ENABLE);
         //2.设置初始密码
@@ -83,6 +82,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         //5.调用Mapper仓库  插入数据到数据库
         employeeMapper.insert(employee);
+
 
     }
 
