@@ -70,7 +70,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         //新增员工
         //将DTO的数据转到Employee 将员工类的信息转到数据库中
         Employee employee = new Employee();
-        BeanUtils.copyProperties(dto,employee);
+        BeanUtils.copyProperties(dto, employee);
 
         //1.设置状态
         employee.setStatus(StatusConstant.ENABLE);

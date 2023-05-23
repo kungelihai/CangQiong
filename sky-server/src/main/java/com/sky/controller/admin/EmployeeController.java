@@ -14,7 +14,6 @@ import com.sky.vo.EmployeeLoginVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.message.ReusableMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -79,7 +78,7 @@ public class EmployeeController {
 
     @PostMapping
     @ApiOperation("新增员工")
-    public Result save(@RequestBody EmployeeDTO dto){
+    public Result save(@RequestBody EmployeeDTO dto) {
 
         log.info("员工信息：{}", dto);
         employeeService.saveUser(dto);
@@ -88,42 +87,46 @@ public class EmployeeController {
 
     @GetMapping("/page")
     @ApiOperation("员工分页查询")
-    public Result page(EmployeePageQueryDTO dto){
-        log.info("员工分页参数：{}",dto);
+    public Result page(EmployeePageQueryDTO dto) {
+        log.info("员工分页参数：{}", dto);
 
         PageResult PageResult = employeeService.page(dto);
 
         return Result.success(PageResult);
     }
+
     /**
      * 启用禁用员工账号
+     *
      * @param status
      * @param id
      * @return
      */
     @PostMapping("/status/{status}")
     @ApiOperation("启用禁用员工账号")
-    public Result startOrStop(@PathVariable Integer status,Long id){
+    public Result startOrStop(@PathVariable Integer status, Long id) {
         log.info("状态：{},员工id:{}", status == 1 ? "启用" : "禁用", id);
 
-        employeeService.startOrStop(status,id);//后绪步骤定义
+        employeeService.startOrStop(status, id);//后绪步骤定义
         return Result.success();
     }
+
     /**
      * 根据id查询员工信息
+     *
      * @param id
      * @return
      */
     @GetMapping("/{id}")
     @ApiOperation("根据id查询员工信息")
-    public Result<Employee> getById(@PathVariable Long id){
+    public Result<Employee> getById(@PathVariable Long id) {
         Employee employee = employeeService.getById(id);
         return Result.success(employee);
     }
 
     @PutMapping
     @ApiOperation("编辑员工信息")
-    public Result update(@RequestBody EmployeeDTO employeeDTO){
+    public Result update(@RequestBody EmployeeDTO employeeDTO) {
         log.info("编辑员工信息：{}", employeeDTO);
         employeeService.update(employeeDTO);
         return Result.success();
