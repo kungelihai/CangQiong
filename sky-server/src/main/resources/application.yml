@@ -56,3 +56,8 @@ sky:
   wechat:
     appid: ${sky.wechat.appid}
     secret: ${sky.wechat.secret}
+  shop:
+    address: 长沙市望城区中南林业科技大学涉外学院
+  baidu:
+    ak: vBiXAL1fyR1ZzqLqPlDWpCfG2KVPgZG6
+
